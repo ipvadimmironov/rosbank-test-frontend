@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "./reset.css";
 import "./globals.css";
 import Link from "next/link";
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,15 +21,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Link href="/">Root</Link>
-        <hr style={{
-          "borderColor": "#91bf04",
-          "borderWidth": "thin",
-          "margin": "10px"
-        }}></hr>
-        <br></br><br></br>
-        {children}
 
+        <AntdRegistry>
+          <Providers>
+            <Link href="/">Root</Link>
+            <hr style={{
+              "borderColor": "rgb(57, 192, 233)",
+              "borderWidth": "thin",
+              "margin": "10px"
+            }}></hr>
+            <br></br><br></br>
+            {children}
+          </Providers>
+        </AntdRegistry>
       </body>
     </html >
   );
